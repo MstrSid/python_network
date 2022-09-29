@@ -9,15 +9,15 @@ def get_card_curs():
     urls = [
         'https://belarusbank.by/api/kurs_cards',
     ]
-    json_cards_curs = ''
+    json_cards_curs: []
     rs = (grequests.get(u) for u in urls)
     req = grequests.map(rs)
     for response in req:
-        json_cards_curs = response.json()[len(response.json()) - 1]
-    print(f'В {json_cards_curs["kurs_date_time"].replace("-", ".")} банк покупает | банк продает:')
-    print(f'USD: {json_cards_curs["USDCARD_in"]} | {json_cards_curs["USDCARD_out"]}\n'
-          f'EUR: {json_cards_curs["EURCARD_in"]} | {json_cards_curs["EURCARD_out"]}\n'
-          f'RUB: {json_cards_curs["RUBCARD_in"]} | {json_cards_curs["RUBCARD_out"]}')
+        json_cards_curs = response.json()[0]
+        print(f'В {json_cards_curs["kurs_date_time"].replace("-", ".")} банк покупает | банк продает:')
+        print(f'USD: {json_cards_curs["USDCARD_in"]} | {json_cards_curs["USDCARD_out"]}\n'
+              f'EUR: {json_cards_curs["EURCARD_in"]} | {json_cards_curs["EURCARD_out"]}\n'
+              f'RUB: {json_cards_curs["RUBCARD_in"]} | {json_cards_curs["RUBCARD_out"]}')
     print()
 
 
