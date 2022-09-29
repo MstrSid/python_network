@@ -19,6 +19,7 @@ def get_cash_curs(city="Минск"):
         print(f'USD: {item["USD_in"]} | {item["USD_out"]}\n'
               f'EUR: {item["EUR_in"]} | {item["EUR_out"]}\n'
               f'RUB: {item["RUB_in"]} | {item["RUB_out"]}')
+        print(f'Адрес: {item["street_type"]}{item["street"]} {item["home_number"]}')
         print()
 
 
