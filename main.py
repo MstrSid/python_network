@@ -4,8 +4,10 @@ import requests
 def get_card_curs():
     r_cards_curs = requests.get('https://belarusbank.by/api/kurs_cards')
     json_cards_curs = r_cards_curs.json()[0]
+    important_keys = ['USDCARD_in', 'USDCARD_out', 'EURCARD_in', 'EURCARD_out', 'RUBCARD_in', 'RUBCARD_out']
     for key in json_cards_curs:
-        print(f'{key}: {json_cards_curs[key]}')
+        if key in important_keys:
+            print(f'{key}: {json_cards_curs[key]}')
     print()
 
 
